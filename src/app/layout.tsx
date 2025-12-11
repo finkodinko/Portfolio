@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { RootClient } from "@/components/RootClient";
+import { Navigation } from "@/components/Navigation";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Work - Creative Studio",
-  description: "Digital artifacts crafted with intention, motion, and creativity",
+  title: "Creative Studio - Interactive Design & Real-time Experiences",
+  description: "We craft cinematic digital experiences combining real-time 3D, motion design, and interactive storytelling.",
 };
 
 export default function RootLayout({
@@ -25,9 +27,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black`}
       >
-        {children}
+        <RootClient>
+          <Navigation />
+          {children}
+        </RootClient>
       </body>
     </html>
   );
